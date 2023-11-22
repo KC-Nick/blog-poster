@@ -1,0 +1,28 @@
+{
+  "name": "blog-poster",
+  "version": "1.0.0",
+  "description": "A functioning CMS style blogging application.",
+  "main": "server.js",
+  "scripts": {
+    "test": "node test",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KC-Nick/blog-poster.git"
+  },
+  "author": "KC-Nick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KC-Nick/blog-poster/issues"
+  },
+  "homepage": "https://github.com/KC-Nick/blog-poster#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.3.1",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.6.5",
+    "sequelize": "^6.35.1"
+  }
+}
