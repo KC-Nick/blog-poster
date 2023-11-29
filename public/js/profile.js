@@ -14,7 +14,7 @@ const newFormHandler = async (event) => {
       });
   
       if (response.ok) {
-        document.location.replace('/posts');
+        document.location.reload();
       } else {
         alert('Failed to create post');
       }
@@ -24,15 +24,20 @@ const newFormHandler = async (event) => {
   const delButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
-  
-      const response = await fetch(`/api/posts/${id}`, {
-        method: 'DELETE',
-      });
-  
-      if (response.ok) {
-        document.location.replace('/posts');
-      } else {
-        alert('Failed to delete post');
+      
+      // Show an alert to confirm the deletion
+      const confirmDelete = confirm('Are you sure you want to delete this post?');
+      
+      if (confirmDelete) {
+        const response = await fetch(`/api/posts/${id}`, {
+          method: 'DELETE',
+        });
+        
+        if (response.ok) {
+          document.location.reload();
+        } else {
+          alert('Failed to delete post');
+        }
       }
     }
   };
