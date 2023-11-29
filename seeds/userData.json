@@ -1,8 +1,13 @@
 [
     {
-      "user": "SalThePal",
+      "name": "SalThePal",
       "email": "sal@hotmail.com",
       "password": "password12345"
+    },
+    {
+      "name": "GrandmaGrape",
+      "email": "gg-grape@gmail.com",
+      "password": "abcd123efg456"
     }
   ]
   

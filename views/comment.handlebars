@@ -1,0 +1,22 @@
+<section id="comments-section" class="comments">
+     {{#if comment.length}}
+    {{#each comment as |comment|}}
+        <section id="{{{comment.id}}}">
+            <section>
+                <h2>{{comment.description}}</h2>
+                <p>Created by {{user.name}} on {{format_date comment.date_created}}</p>
+                {{#if logged_in}}
+                    <button id="edit-comment">Edit</button>
+                    <button id="delete-comment">Delete</button>
+                {{/if}}
+    {{/each}}
+
+    <section>
+        {{#if logged_in}}
+            <button id="commentButton">+ New Comment</button>
+        {{else}}
+            <p> You must <a href="/login">log in</a> before adding a comment!!</p>
+        {{/if}}
+    </section>
+</section>
+{{!-- <script src=""></script> --}}

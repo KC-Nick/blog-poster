@@ -2,20 +2,19 @@ const newFormHandler = async (event) => {
     event.preventDefault();
   
     const name = document.querySelector('#name').value.trim();
-    const tag = document.querySelector('#tag').value.trim();
     const description = document.querySelector('#desc').value.trim();
   
-    if (name && tag && description) {
+    if (name && description) {
       const response = await fetch(`/api/posts`, {
         method: 'POST',
-        body: JSON.stringify({ name, tag, description }),
+        body: JSON.stringify({ name, description }),
         headers: {
           'Content-Type': 'application/json',
         },
       });
   
       if (response.ok) {
-        document.location.replace('/post');
+        document.location.replace('/posts');
       } else {
         alert('Failed to create post');
       }
@@ -45,4 +44,3 @@ const newFormHandler = async (event) => {
   document
     .querySelector('.post-list')
     .addEventListener('click', delButtonHandler);
-  
