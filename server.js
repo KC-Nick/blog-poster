@@ -12,6 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 const sess = {
+  //CHANGE before turning in
   secret: 'Super secret secret',
   cookie: {},
   resave: false,
@@ -23,7 +24,9 @@ const sess = {
 
 app.use(session(sess));
 
-const hbs = exphbs.create({ helpers });
+const hbs = exphbs.create({ 
+  helpers
+});
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');

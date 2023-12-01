@@ -1,8 +1,30 @@
-<div id="{{{post.id}}}" class="text-center">
-  <h2>{{name}}</h2>
-  <p>{{description}}</p>
-  <p>Created by {{user.name}} on {{format_date date_created}}</p>
-  <p>Leave a comment below.
-    {{> comment}}
-  </p>
+<div id="{{{post.id}}}" class="homepage-post-div">
+  <h2 class="header-three">{{name}}</h2>
+  <p class="header-three">{{description}}</p>
+  <p class="posts-div">Created by {{user.name}} on {{format_date date_created}}</p>
+  <p class="header-three">Leave a comment below.
+  <div class="main-commentdiv">
+    <div class="new-commentdiv">
+      <h3>Create a New Comment:</h3>
+      <form class="new-comment-form">
+        <div class="form-group">
+          <label for="comment-desc">description:</label>
+          <textarea class="form-input" id="comment-desc" name="comment-desc"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </form>
+    </div>
+    {{#if comments.length}}
+    <div class="current-commentdiv comment-list">
+      <h3>Current Comments:</h3>
+      {{#each comments as |comment|}}
+      {{> comment user=user}}
+      {{/each}}
+    </div>
+    {{/if}}
+    </p>
+  </div>
 </div>
+<script src="/js/comment.js"></script>

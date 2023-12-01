@@ -1,19 +1,19 @@
-<div class="row">
-  <div class="col-auto">
+<div class="welcome-row">
+  <div class="header-two">
     <h2>Welcome, {{name}}!</h2>
   </div>
 </div>
 
-<div class="row mt-4">
-  <div class="col-md-6">
-    <h3>Create a New Post:</h3>
+<div class="profile-post-section">
+  <div class="new-post-section">
+    <h3 class="header-three">Create a New Post:</h3>
 
     <form class="form new-post-form">
-      <div class="form-group">
+      <div class="form-group name-postdiv">
         <label for="name">post name:</label>
         <input class="form-input" type="text" id="name" name="post-name" />
       </div>
-      <div class="form-group">
+      <div class="form-group desc-postdiv">
         <label for="desc">description:</label>
         <textarea class="form-input" id="desc" name="post-desc"></textarea>
       </div>
@@ -24,16 +24,16 @@
   </div>
 
   {{#if posts.length}}
-  <div class="col-md-6 post-list">
-    <h3>Current Posts:</h3>
+  <div class="list-postdiv post-list">
+    <h3 class="header-three">Current Posts:</h3>
 
     {{#each posts as |post|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/post/{{post.id}}">{{post.name}}</a></h4>
+    <div class="indv-postdiv">
+      <div class="postname-profdiv">
+        <h4><a class="href" href="/post/{{post.id}}">{{post.name}}</a></h4>
       </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{post.id}}">DELETE</button>
+      <div class="del-postdiv">
+        <button class="btn btn-danger" data-id="{{post.id}}">Delete</button>
       </div>
     </div>
     {{/each}}

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Post, User } = require('../models');
+const { Post, Comment, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
@@ -27,24 +27,26 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/post/:id', async (req, res) => {
+router.get('/posts/:id', async (req, res) => {
   try {
-    const postData = await {Post}.findByPk(req.params.id, {
+    const postData = await Post.findByPk(req.params.id, {
       include: [
         {
           model: User,
           attributes: ['name'],
         },
+        Comment
       ],
     });
 
     const post = postData.get({ plain: true });
-
+    console.log("43", post);
     res.render('post', {
       ...post,
       logged_in: req.session.logged_in
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
@@ -78,5 +80,30 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+
+// router.get('/', async (req, res) => {
+//   try {
+//     const commentData = await Comment.findAll({
+//       include: [
+//         {
+//           model: User,
+//           attributes: ['name'], // Include only the username of the user
+//         },
+//       ],
+//     });
+
+//     if (!commentData) {
+//       res.status(404).json({ message: 'No comment found with this id!' });
+//       return;
+//     }
+
+//     const comments = commentData.map((comment) => comment.get({ plain: true }));
+
+//     res.json(comments);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 module.exports = router;
