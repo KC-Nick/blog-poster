@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Comment } = require('../../models');
+const { Post } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
@@ -12,6 +12,25 @@ router.post('/', async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
   }
+});
+
+router.put('/:id', async (req, res) => {
+  Post.update(
+    {
+      description: req.body.description,
+      timeframe: req.body.timeframe
+    },
+    {
+      where: {
+        id: req.params.id,
+      },
+    }
+  )
+    .then((updatedPost) => {
+      // Sends the updated book as a json response
+      res.json(updatedPost);
+    })
+    .catch((err) => res.json(err));
 });
 
 router.delete('/:id', async (req, res) => {

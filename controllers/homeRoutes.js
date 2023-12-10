@@ -35,7 +35,11 @@ router.get('/posts/:id', async (req, res) => {
           model: User,
           attributes: ['name'],
         },
-        Comment
+        { model: Comment,
+        include: [{
+          model: User,
+          attributes: ['name']
+        }]}
       ],
     });
 
@@ -81,29 +85,77 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-// router.get('/', async (req, res) => {
-//   try {
-//     const commentData = await Comment.findAll({
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['name'], // Include only the username of the user
-//         },
-//       ],
-//     });
+router.get('/comments/:id', async (req, res) => {
+  try {
+    const commentData = await Comment.findByPk(req.params.id, {
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        }]
+  });
 
-//     if (!commentData) {
-//       res.status(404).json({ message: 'No comment found with this id!' });
-//       return;
-//     }
+    const comment = commentData.get({ plain: true });
+    res.render('single-comment', {
+      ...comment,
+      logged_in: req.session.logged_in
+    });
+    console.log(comment);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
-//     const comments = commentData.map((comment) => comment.get({ plain: true }));
+router.get('/posts/:id/edit', async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id);
 
-//     res.json(comments);
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
+    const post = postData.get({ plain: true });
+    res.render('editPost', {
+      post,
+      logged_in: req.session.logged_in
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+router.get('/comments/:id/edit', async (req, res) => {
+  try {
+    const commentData = await Comment.findByPk(req.params.id);
+
+    const comment = commentData.get({ plain: true });
+    res.render('editComment', {
+      comment,
+      logged_in: req.session.logged_in
+    });
+    console.log(comment.id);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
+
+// Use withAuth middleware to prevent access to route
+router.get('/profile', withAuth, async (req, res) => {
+  try {
+    // Find the logged in user based on the session ID
+    const userData = await User.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] },
+      include: [{ model: Post }],
+    });
+
+    const user = userData.get({ plain: true });
+    console.log(user);
+    res.render('profile', {
+      ...user,
+      logged_in: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;
