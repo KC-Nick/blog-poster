@@ -2,6 +2,10 @@
   <h2 class="header-three">{{name}}</h2>
   <p class="header-three">{{description}}</p>
   <p class="posts-div">Created by {{user.name}} on {{format_date date_created}}</p>
+  <a href="/posts/{{id}}/edit" value="edit">edit</a>
+  <div class="col-md-4">
+    <button class="btn btn-danger" data-id="{{id}}" value="delete">delete</button>
+  </div>
   <p class="header-three">Leave a comment below.
   <div class="main-commentdiv">
     <div class="new-commentdiv">
@@ -20,7 +24,7 @@
     <div class="current-commentdiv comment-list">
       <h3>Current Comments:</h3>
       {{#each comments as |comment|}}
-      {{> comment user=user}}
+      {{> comment }}
       {{/each}}
     </div>
     {{/if}}
@@ -28,3 +32,4 @@
   </div>
 </div>
 <script src="/js/comment.js"></script>
+<script src="/js/delete-ind-post.js"></script>

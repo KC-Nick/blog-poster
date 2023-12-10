@@ -35,6 +35,10 @@ User.init(
         len: [6],
       },
     },
+    last_activity: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
   },
   {
     hooks: {

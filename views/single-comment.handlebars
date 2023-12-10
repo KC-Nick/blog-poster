@@ -1,12 +1,9 @@
-<div class="dual-commentdiv">
-    <div class="desc-commentdiv">
-        <h4>{{comment.description}}</a></h4>
-        <h4><a class="href" href="/posts/{{comment.post_id}}">Go Back</a></h4>
-    </div>
-    <div class="btn-commentdiv">
-        <button class="btn btn-danger" data-id="{{comment.id}}">Delete</button>
-    </div>
-    <div class="btn-commentdiv">
-        <button class="btn editbtn" data-id="{{comment.id}}">Edit</button>
-    </div>
-</div>
+<div id="{{{this.id}}}" class="text-center">
+  <p>{{description}}</p>
+  <a href="/comments/{{id}}/edit" value="edit">edit</a>
+  <p>Created by {{this.user.name}} — {{format_date date_created}}</p>
+  <div class="col-md-4">
+    <button class="btn btn-danger" data-id="{{this.id}}" value="delete">delete</button>
+  </div>
+  
+  <script src="/js/delete-ind-comment.js"></script>

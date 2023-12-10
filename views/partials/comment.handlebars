@@ -2,8 +2,7 @@
     <div class="desc-commentdiv">
         <h4><a class="href" href="/comments/{{this.id}}">{{this.description}}</a></h4>
     </div>
-    <script>{ console.log(user); }</script>
-    <p class="posts-div">Created by {{comment.user.name}} on {{format_date date_created}}</p>
+    <p class="posts-div">Created by {{this.user.name}} on {{format_date date_created}}</p>
     <div class="btn-commentdiv">
         <button class="btn btn-danger" data-id="{{this.id}}">DELETE</button>
     </div>
