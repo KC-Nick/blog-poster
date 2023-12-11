@@ -11,16 +11,15 @@
 <body>
   <div class="body-div">
     <header class="header-div">
-      <h1>
-        <a class="href" href="/">Welcome to the berry blog!</a>
-      </h1>
+      <h1>Welcome to the berry blog!</h1>
+      <button><a class="href" href="/">Homepage</a></button>
       <nav class="nav-div">
         <!-- Conditionally render login or logout links -->
         {{#if logged_in}}
-        <a class="href profile" href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
+        <button><a class="href" href="/profile">Profile</a></button> |
+        <button class="logout" id="logout">Logout</button>
         {{else}}
-        <a class="href" href="/login">login</a>
+        <button><a class="href" href="/login">Login</a></button>
         {{/if}}
       </nav>
     </header>

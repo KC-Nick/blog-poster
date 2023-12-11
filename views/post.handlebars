@@ -2,10 +2,12 @@
   <h2 class="header-three">{{name}}</h2>
   <p class="header-three">{{description}}</p>
   <p class="posts-div">Created by {{user.name}} on {{format_date date_created}}</p>
-  <a href="/posts/{{id}}/edit" value="edit">edit</a>
+  {{#if logged_in}}
+  <button><a href="/posts/{{id}}/edit" class="href" value="edit">edit</a></button>
   <div class="col-md-4">
     <button class="btn btn-danger" data-id="{{id}}" value="delete">delete</button>
   </div>
+  {{/if}}
   <p class="header-three">Leave a comment below.
   <div class="main-commentdiv">
     <div class="new-commentdiv">

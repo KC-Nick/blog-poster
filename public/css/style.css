@@ -9,7 +9,9 @@ body {
     flex-direction: column;
     min-height: 100vh;
     justify-content: flex-start;
-    background: rgba(255, 186, 121, 0.954);
+    background: rgba(255, 162, 96, 0.954);
+    background-image: url('/img/berry-stock-img.png');
+    background-size: 1500px 900px;
 }
 
 .login-main {
@@ -33,9 +35,15 @@ body {
 
 .header-two {
     font-style: italic;
-    margin-left: 50%;
+    margin-top: 18%;
+    margin-left: 75%;
     font-size: 30px;
 
+}
+
+span {
+    background: rgb(75, 0, 145);
+    border-radius: 50%;
 }
 
 .header-three {
@@ -43,7 +51,7 @@ body {
 }
 
 button {
-    background: radial-gradient(circle, rgb(179, 98, 255) 0%, rgba(255, 128, 37, 0.954) 100%);
+    background: radial-gradient(circle, rgba(255, 162, 96, 0.954) 0%, rgb(75, 0, 145) 100%);
     border-radius: 8px;
     cursor: pointer;
     font-size: 1.3em;
@@ -53,21 +61,10 @@ button {
     margin-top: 0.6em;
 }
 
-.profile {
-    background: radial-gradient(circle, rgb(179, 98, 255) 0%, rgba(255, 128, 37, 0.954) 100%);
-    border: 1px solid #000000;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1.3em;
-    letter-spacing: 0.21px;
-    padding: 10px;
-    font-style: italic;
-}
-
 header {
     padding: 40px;
     text-align: center;
-    background: #470099;
+    background: rgb(75, 0, 145);
     color: #fff;
 }
 
@@ -134,3 +131,88 @@ main {
     color: #FFFFFF;
     text-align: center;
 }
+
+.main-commentdiv {
+    border: solid #FFFFFF;
+}
+
+.current-commentdiv {
+    border-top: solid #FFFFFF;
+}
+
+.ind-comment {
+    background: rgb(75, 0, 145);
+    color: #FFFFFF;
+    margin-top: 10%;
+    border-radius: 20%;
+    padding: 2%;
+}
+
+.ind-comment-btn {
+    display: flex;
+    justify-content: space-around;
+}
+
+.editpost {
+    background: rgb(75, 0, 145);
+    display: flex;
+    flex-direction: column;
+    border: solid #000000;
+    color: #FFFFFF;
+    border-radius: 10%;
+    margin-top: 5%;
+    padding: 2%;
+    margin-right: 40%;
+}
+
+.newpost {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10%;
+    background: rgb(75, 0, 145);
+    color: #FFFFFF;
+    padding: 2%;
+    border-radius: 35%;
+}
+
+.newcomment {
+    display: flex;
+    flex-direction: column;
+    color: #FFFFFF;
+    background: rgb(75, 0, 145);
+    border-radius: 35%;
+    padding: 20px;
+    margin-top: 5%;
+}
+
+.editcomment {
+    background: rgb(75, 0, 145);
+    display: flex;
+    flex-direction: column;
+    border: solid #000000;
+    color: #FFFFFF;
+    border-radius: 10%;
+    margin-top: 10%;
+    padding: 3px;
+}
+
+/* @media screen and (max-widtch: 992px) {
+    body {
+        width: 100%;
+    }
+
+    .welcome {
+        display: flex;
+        align-items: flex-start;
+    }
+}
+
+@media screen and (max-widtch: 782px) {
+    body {
+        width: 75%;
+    }
+
+    .welcome-row {
+        width: 75%;
+    }
+} */

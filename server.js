@@ -16,7 +16,7 @@ const sess = {
   //CHANGE before turning in
   secret: 'Super secret secret',
   cookie: {
-    maxAge: 1 * 30 * 60 * 1000, //2 hours
+    maxAge: 1 * 15 * 60 * 1000, //1 * 15 minutes * 60 seconds * milliseconds
   },
   resave: false,
   saveUninitialized: true,
@@ -53,7 +53,7 @@ app.use((req, res, next) => {
   if (req.session.user && req.session.user.last_activity) {
     const currentTime = new Date();
     const lastActivityTime = new Date(req.session.user.last_activity);
-    const sessionTimeout = 1 * 30 * 60 * 1000; // 2 hours in milliseconds
+    const sessionTimeout = 1 * 15 * 60 * 1000; // 15 minutes in milliseconds
 
     if (currentTime - lastActivityTime > sessionTimeout) {
       // Clear the session and redirect to the login page

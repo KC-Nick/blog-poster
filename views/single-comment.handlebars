@@ -1,8 +1,8 @@
-<div id="{{{this.id}}}" class="text-center">
+<div id="{{{this.id}}}" class="ind-comment">
   <p>{{description}}</p>
-  <a href="/comments/{{id}}/edit" value="edit">edit</a>
-  <p>Created by {{this.user.name}} — {{format_date date_created}}</p>
-  <div class="col-md-4">
+  <p class="posts-div">Created by {{this.user.name}} — {{format_date date_created}}</p>
+  <div class="ind-comment-btn">
+    <button><a href="/comments/{{id}}/edit" class="href" value="edit">edit</a></button>
     <button class="btn btn-danger" data-id="{{this.id}}" value="delete">delete</button>
   </div>
   

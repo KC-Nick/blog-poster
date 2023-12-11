@@ -10,11 +10,12 @@ This app presents users with a MVC modelled blogging page that one can create an
   - [Contact](#contact)
   - [Test](#test)
   - [License](#license)
+  - [Credits](#credits)
 
 
 ## Usage
 
-To use this app, visit the page here; /HEROKU LINK TBA/. Create an account, then browse the homepage to see what users have posted, make your own post, or comment on existing posts. Users can also delete or edit posts and comments.
+To use this app, visit the page here; [LINK](https://arcane-hollows-70364-2470ccfb589f.herokuapp.com/). Create an account, then browse the homepage to see what users have posted, make your own post, or comment on existing posts. Users can also delete or edit posts and comments.
 
 ## Future
 
@@ -27,3 +28,7 @@ A test video will be included with the README.
 ## License
 
 TBA.
+
+## Credits
+
+The image used in the background is a stock image by this photographer; [LINK](https://unsplash.com/@cirala_sky).
