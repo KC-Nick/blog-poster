@@ -18,35 +18,60 @@ router.post('/', async (req, res) => {
     }
 });
 
-router.put('/:id', (req, res) => {
-    // update a comment's description by its `id` value
-    Comment.update(
-        {
-            description: req.body.description
-        },
-        {
-            where: {
-                id: req.params.id,
-            },
-        }
-    )
-        .then((updatedComment) => {
-            // Sends the updated comment as a json response
-            res.json(updatedComment);
-        })
-        .catch((err) => res.json(err));
-});
-
-router.delete('/:id', (req, res) => {
-    Comment.destroy({
+router.put('/:id', async (req, res) => {
+//get user of comment id
+try {
+    const userData = await Comment.findOne({
         where: {
             id: req.params.id
-        },
-    })
-        .then((deletedComment) => {
-            res.json(deletedComment);
-        })
-        .catch((err) => res.json(err));
+        }
+    });
+    if (userData.dataValues.user_id !== req.session.user_id) {
+        res.status(404).json({ message: 'User id does not match post'})
+    } else if (!userData) {
+        res.status(404).json({ message: 'Post not found'})
+    } else if (userData.dataValues.user_id === req.session.user_id) {
+        const commentData = await Comment.update(
+            {
+                description: req.body.description
+            },
+            {
+                where: {
+                    id: req.params.id
+                }
+            }
+        );
+        res.json(commentData);
+    }
+} catch(err) {
+    console.log(err);
+    res.json(err);
+}
+});
+
+router.delete('/:id', async (req, res) => {
+    try {
+        const userData = await Comment.findOne({
+            where:{
+                id:req.params.id
+            }
+        });
+        if (userData.dataValues.user_id !== req.session.user_id) {
+            res.status(404).json({ message: 'User id does not match comment'});
+        } else if (!userData) {
+            res.status(404).json({ message: 'No comment found' });
+        } else if (userData.dataValues.user_id === req.session.user_id) {
+            const commentData = await Comment.destroy({
+                where: {
+                    id: req.params.id,
+                    user_id: req.session.user_id
+                },
+            });
+            res.status(200).json(commentData);
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 module.exports = router;  

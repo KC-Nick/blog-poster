@@ -5,12 +5,13 @@ const editButtonHandler = async (event) => {
     if (event.target.hasAttribute('data-id')) {
       const id = event.target.getAttribute('data-id');
       
+      const name = document.querySelector('#title-input').value.trim();
       const description = document.querySelector('#desc-input').value.trim();
       
-      if ( description ) {
+      if ( name && description ) {
         const response = await fetch(`/api/posts/${id}`, {
           method: 'PUT',
-          body: JSON.stringify({ description }),
+          body: JSON.stringify({ name, description }),
           headers: {
             'Content-Type': 'application/json',
           },
