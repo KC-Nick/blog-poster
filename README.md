@@ -4,6 +4,8 @@
 
 This app presents users with a MVC modelled blogging page that one can create an account on, log in and out of, create posts, browse a homepage of posts from other users, and comment on posts. This uses a server, database, cookies, Express, and more to run.
 
+*** Project currently down due to needing new server host, thank you for visiting.
+
 ## Usage
 
 To use this app, visit the page here; [LINK](https://arcane-hollows-70364-2470ccfb589f.herokuapp.com/). Create an account, then browse the homepage to see what users have posted, make your own post, or comment on existing posts. Users can also delete or edit posts and comments.
